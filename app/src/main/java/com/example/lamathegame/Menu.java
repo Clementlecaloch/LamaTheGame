@@ -13,8 +13,8 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-        MediaPlayer superSoundtrack = MediaPlayer.create(Menu.this, R.raw.super_soundtrack);
-        superSoundtrack.start();
+        MediaPlayer sound = MediaPlayer.create(getApplicationContext(),R.raw.super_soundtrack);
+        sound.start();
     }
 
     public void play(View view) {
