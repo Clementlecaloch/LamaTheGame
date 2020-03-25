@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Menu">
 
+    <ImageView
+        android:id="@+id/lamaAnimationMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ImageView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
