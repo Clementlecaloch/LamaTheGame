@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/tile012_mini" android:duration="200"></item>
+    <item android:drawable="@drawable/tile013_mini" android:duration="200"></item>
+    <item android:drawable="@drawable/tile014_mini" android:duration="200"></item>
+    <item android:drawable="@drawable/tile015_mini" android:duration="200"></item>
+</animation-list>

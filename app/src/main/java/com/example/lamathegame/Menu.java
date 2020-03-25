@@ -7,6 +7,8 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class Menu extends AppCompatActivity {
@@ -16,8 +18,10 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+        //pour enlever le titre
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         ImageView lamaImageView = (ImageView) findViewById(R.id.lamaAnimationMenu);
-        lamaImageView.setBackgroundResource(R.drawable.lama_animation);
         AnimationDrawable lamaAnimation = (AnimationDrawable) lamaImageView.getBackground();
         lamaAnimation.start();
 
