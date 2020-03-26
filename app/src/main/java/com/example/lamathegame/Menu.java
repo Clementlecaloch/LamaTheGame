@@ -18,9 +18,6 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        //pour enlever le titre
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         ImageView lamaImageView = (ImageView) findViewById(R.id.lamaAnimationMenu);
         AnimationDrawable lamaAnimation = (AnimationDrawable) lamaImageView.getBackground();
         lamaAnimation.start();
