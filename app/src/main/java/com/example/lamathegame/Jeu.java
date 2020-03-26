@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,13 @@ public class Jeu  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jeu);
 
+        setScene();
+
+        //lancement de la boucle de jeu
+        loopGame();
+    }
+
+    private void setScene() {
         //dimension de l'ecran
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         heightScreen = displayMetrics.heightPixels;
@@ -44,8 +52,12 @@ public class Jeu  extends AppCompatActivity {
         scorpion = new EnemyObstacle(scorpionImageView, widthScreen-80, heightScreen - 327, 70, 57);
         scorpion.setCharacterImageView();
 
-        //lancement de la boucle de jeu
-        loopGame();
+        //draw properly the score
+        TextView scores = findViewById(R.id.score);
+        RelativeLayout.LayoutParams paramsTextView = (RelativeLayout.LayoutParams) scores.getLayoutParams();
+        paramsTextView.topMargin = 100;
+        paramsTextView.leftMargin = widthScreen/2 + scores.getWidth();
+        scores.setLayoutParams(paramsTextView);
     }
 
     private void loopGame() {
