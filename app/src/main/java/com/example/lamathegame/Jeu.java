@@ -10,7 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Jeu  extends AppCompatActivity {
-    private Handler handler= new Handler();
+    private Handler handler = new Handler();
+    private Integer score = 0;
 
     //characters of the game
     private Lama lama;
@@ -46,7 +47,9 @@ public class Jeu  extends AppCompatActivity {
     Runnable refreshGame = new Runnable() {
         @Override
         public void run() {
+            //make the enemy move and make the score up
             scorpion.move();
+            scoreUp();
 
             handler.postDelayed(refreshGame, 10);
         }
@@ -54,5 +57,9 @@ public class Jeu  extends AppCompatActivity {
 
     private void loopGame() {
         refreshGame.run();
+    }
+
+    private void scoreUp() {
+        this.score += 1;
     }
 }
