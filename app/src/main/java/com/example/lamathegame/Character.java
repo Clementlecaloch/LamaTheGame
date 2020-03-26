@@ -12,8 +12,6 @@ public class Character {
     public int sizeX;
     public int sizeY;
     private Rect rectDimension;
-    private int xDelta = 10;
-    private int yDelta = 10;
 
     public Character(ImageView image, int posX, int posY, int sizeX, int sizeY) {
         this.CharacterImageView = image;
@@ -35,39 +33,7 @@ public class Character {
         return CharacterImageView;
     }
 
-    public int getPosX() {
-        return this.posX;
-    }
-
-    public int getPosY() {
-        return this.getPosY();
-    }
-
-    public int getxDelta() {
-        return this.xDelta;
-    }
-
-    public int getyDelta() {
-        return this.yDelta;
-    }
-
     public Rect getRectDimension() {
         return rectDimension;
-    }
-
-    public int getSizeX() {
-        return sizeX;
-    }
-
-    public int getSizeY() {
-        return sizeY;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
     }
 }

@@ -3,6 +3,7 @@ package com.example.lamathegame;
 import android.widget.ImageView;
 
 public class EnemyObstacle extends Character {
+    public int xDelta = 10;
 
     public EnemyObstacle(ImageView image, int posX, int posY, int sizeX, int sizeY) {
         super(image, posX, posY, sizeX, sizeY);
@@ -10,14 +11,13 @@ public class EnemyObstacle extends Character {
 
     //make move the enemyObstacle
     public void move() {
-        if (this.getPosX() < 0) {
-            this.setPosX(Jeu.widthScreen - 70);
-            this.getRectDimension().set(posX, posY, posX + sizeX, this.posY + sizeY);
+        if (posX < 0) {
+            posX = Jeu.widthScreen - 150;
         }
         else {
-            this.setPosX(this.getPosX() - this.getxDelta());
-            this.getRectDimension().set(posX, posY, posX + sizeX, this.posY + sizeY);
+            posX = posX - xDelta;
         }
+        this.getRectDimension().set(posX, posY, posX + sizeX, posY + sizeY);
         this.setCharacterImageView();
     }
 }

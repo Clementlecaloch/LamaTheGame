@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,9 +29,20 @@ public class Jeu  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jeu);
 
+        //draw the scene of the game at his beginning
         setScene();
 
-        //lancement de la boucle de jeu
+        RelativeLayout screen = findViewById(R.id.screen);
+        screen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!lama.onJump()) {
+                    lama.launchJump();
+                }
+            }
+        });
+
+        //launch the loopGame
         loopGame();
     }
 
@@ -49,7 +61,7 @@ public class Jeu  extends AppCompatActivity {
         lama.setCharacterImageView();
 
         //creation d'un scorpion
-        scorpion = new EnemyObstacle(scorpionImageView, widthScreen-80, heightScreen - 327, 70, 57);
+        scorpion = new EnemyObstacle(scorpionImageView, widthScreen-150, heightScreen - 327, 70, 57);
         scorpion.setCharacterImageView();
 
         //draw properly the score
@@ -90,7 +102,7 @@ public class Jeu  extends AppCompatActivity {
             this.score += 1;
             interval = 0;
         }
-        TextView textView = findViewById(R.id.score);
-        textView.setText(this.score.toString());
+        TextView scores = findViewById(R.id.score);
+        scores.setText("Vous avez parcouru : " + this.score.toString());
     }
 }
