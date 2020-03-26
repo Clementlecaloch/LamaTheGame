@@ -1,15 +1,13 @@
 package com.example.lamathegame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Menu extends AppCompatActivity {
 
@@ -18,10 +16,22 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        ImageView lamaImageView = (ImageView) findViewById(R.id.lamaAnimationMenu);
-        AnimationDrawable lamaAnimation = (AnimationDrawable) lamaImageView.getBackground();
-        lamaAnimation.start();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Integer widthScreen = displayMetrics.widthPixels;
 
+        ImageView lamaImageView1 = (ImageView) findViewById(R.id.lamaAnimationMenu1);
+        ImageView lamaImageView2 = (ImageView) findViewById(R.id.lamaAnimationMenu2);
+
+        //create two Lamas for the design of the menu
+        Lama lama1 = new Lama(lamaImageView1, 75, 100, 128, 128);
+        lama1.startAnimation();
+        lama1.setCharacterImageView();
+        Lama lama2 = new Lama(lamaImageView2, widthScreen - 315, 100, 128, 128);
+        lama2.startAnimation();
+        lama2.setCharacterImageView();
+
+        //some good sound for the game atmosphere
         MediaPlayer sound = MediaPlayer.create(getApplicationContext(), R.raw.super_soundtrack);
         sound.start();
     }

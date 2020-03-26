@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +28,6 @@ public class Jeu  extends AppCompatActivity {
         setContentView(R.layout.jeu);
 
         //dimension de l'ecran
-
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         heightScreen = displayMetrics.heightPixels;
         widthScreen = displayMetrics.widthPixels;
@@ -62,8 +60,8 @@ public class Jeu  extends AppCompatActivity {
 
             //Test des collisions
             if (Rect.intersects(lama.getRectDimension(), scorpion.getRectDimension())) {
-                //GAME OVER
-                Toast.makeText(getApplicationContext(), "GAME OVER", Toast.LENGTH_SHORT).show();
+                //TODO
+                //GAME OVER, redirect into the Menu Activity and save the score
             }
             else {
                 scoreUp();
