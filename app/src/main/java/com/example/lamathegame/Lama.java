@@ -7,7 +7,7 @@ import android.os.Handler;
 public class Lama extends Character {
     private Handler handler = new Handler();
     private int jumpCount;
-    private int yDelta = 20;
+    private int yDelta = 15;
     private  int maxDeltaYJump = 50;
 
     public Lama(ImageView image, int posX, int posY, int sizeX, int sizeY) {

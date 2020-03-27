@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,12 +16,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
-public class Jeu  extends AppCompatActivity {
+import java.io.IOException;
+
+public class Jeu extends AppCompatActivity {
     public boolean playing;
     public DisplayMetrics displayMetrics = new DisplayMetrics();
     public static Integer heightScreen;
     public static Integer widthScreen;
     private Handler handler = new Handler();
+    private Scores scoresManagement = new Scores(Jeu.this);
 
     //characters of the game
     private Lama lama;
@@ -36,7 +38,6 @@ public class Jeu  extends AppCompatActivity {
 
     ImageView soundOff;
     private boolean soundIsOn = true;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class Jeu  extends AppCompatActivity {
     }
 
     private void setScene() {
-        //dimension de l'ecran
+        //screen dimension
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         heightScreen = displayMetrics.heightPixels;
         widthScreen = displayMetrics.widthPixels;
@@ -94,12 +95,12 @@ public class Jeu  extends AppCompatActivity {
 
         soundOff = (ImageView) findViewById(R.id.sound);
 
-        //creation du lama du jeu
+        //lama draw
         lama = new Lama(lamaImageView, 20, heightScreen - 348, 54, 64);
         lama.startAnimation();
         lama.setCharacterImageView();
 
-        //creation d'un scorpion
+        //scorpion draw
         scorpion = new EnemyObstacle(scorpionImageView, widthScreen-150, heightScreen - 327, 70, 57);
         scorpion.setCharacterImageView();
 
@@ -130,11 +131,18 @@ public class Jeu  extends AppCompatActivity {
                     sound.stop();
                     death.start();
                     playing = false;
+
+                    //save score
                     String scoreText = score.toString();
+                    try {
+                        scoresManagement.addScore(scoreText);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    //redirection to the menu
                     Intent intent = new Intent(Jeu.this, Menu.class);
                     startActivity(intent);
-                    //TODO
-                    //GAME OVER, redirect into the Menu Activity and save the score
                 }
                 else {
                     scoreUp();
