@@ -31,16 +31,11 @@ public class Menu extends AppCompatActivity {
         lama2.startAnimation();
         lama2.setCharacterImageView();
 
-        //some good sound for the game atmosphere
-        MediaPlayer sound = MediaPlayer.create(getApplicationContext(), R.raw.super_soundtrack);
-        sound.start();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        MediaPlayer sound = MediaPlayer.create(getApplicationContext(), R.raw.super_soundtrack);
-        sound.stop();
     }
 
     public void play(View view) {
