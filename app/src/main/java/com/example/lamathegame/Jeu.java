@@ -130,6 +130,7 @@ public class Jeu  extends AppCompatActivity {
                     sound.stop();
                     death.start();
                     playing = false;
+                    String scoreText = score.toString();
                     Intent intent = new Intent(Jeu.this, Menu.class);
                     startActivity(intent);
                     //TODO
