@@ -1,7 +1,9 @@
 package com.example.lamathegame;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 public class Jeu  extends AppCompatActivity {
     public boolean playing;
@@ -31,7 +34,7 @@ public class Jeu  extends AppCompatActivity {
     MediaPlayer sound;
     MediaPlayer death;
 
-    Button soundOff;
+    ImageView soundOff;
     private boolean soundIsOn = true;
 
 
@@ -63,11 +66,15 @@ public class Jeu  extends AppCompatActivity {
                 if(soundIsOn) {
                     sound.pause();
                     soundIsOn = false;
-                    soundOff.setText("SOUND OFF");
+                    Resources res = getResources();
+                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.soundoff, null);
+                    soundOff.setBackground(drawable);
                 } else {
                     sound.start();
                     soundIsOn = true;
-                    soundOff.setText("SOUND ON");
+                    Resources res = getResources();
+                    Drawable drawable = ResourcesCompat.getDrawable(res, R.drawable.soundison, null);
+                    soundOff.setBackground(drawable);
                 }
             }
         });
@@ -85,7 +92,7 @@ public class Jeu  extends AppCompatActivity {
         ImageView lamaImageView = (ImageView) findViewById(R.id.lamaImageView);
         ImageView scorpionImageView = (ImageView) findViewById(R.id.scorpionImageView);
 
-        soundOff = (Button) findViewById(R.id.sound);
+        soundOff = (ImageView) findViewById(R.id.sound);
 
         //creation du lama du jeu
         lama = new Lama(lamaImageView, 20, heightScreen - 348, 54, 64);
